@@ -1,0 +1,10 @@
+# Credenciais locais da CLI Nuvemshop
+.nuvem
+.nuvem.*
+
+# Credenciais e arquivos locais
+.env
+.env.*
+!.env.example
+node_modules/
+*.log
