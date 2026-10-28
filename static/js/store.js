@@ -3695,6 +3695,140 @@
     updateParallax();
   }
 
+  function initSpecialRecommendations() {
+    var recommendations = document.querySelector('.js-special-recommendations');
+    if (!recommendations || recommendations.dataset.initialized === 'true') return;
+    recommendations.dataset.initialized = 'true';
+
+    var trigger = recommendations.querySelector('.js-special-recommendations-open');
+    var overlay = recommendations.querySelector('.js-special-recommendations-overlay');
+    var panel = recommendations.querySelector('.js-special-recommendations-panel');
+    var close = recommendations.querySelector('.js-special-recommendations-close');
+    var tabs = Array.prototype.slice.call(recommendations.querySelectorAll('.js-special-recommendations-tab'));
+    var panels = Array.prototype.slice.call(recommendations.querySelectorAll('.js-special-recommendations-content'));
+    var content = recommendations.querySelector('.special-recommendations__content');
+    var closeTimer;
+    var isOpen = false;
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    // The current Ipanema has no fixed product bar. If one is enabled later,
+    // use its actual visible height to keep the mobile trigger clear of it.
+    var productForm = document.getElementById('product_form');
+    if (productForm) {
+      var updateFixedFormOffset = function() {
+        var fixed = null;
+        var element = productForm;
+        while (element && element !== document.body) {
+          if (window.getComputedStyle(element).position === 'fixed') {
+            fixed = element;
+            break;
+          }
+          element = element.parentElement;
+        }
+        var rect = fixed ? fixed.getBoundingClientRect() : null;
+        var visible = window.innerWidth <= 767 && rect && rect.height > 0 && rect.top < window.innerHeight && rect.bottom >= window.innerHeight - 2;
+        document.body.classList.toggle('product-fixed-form-visible', !!visible);
+        if (visible) document.body.style.setProperty('--product-fixed-form-height', rect.height + 'px');
+        else document.body.style.removeProperty('--product-fixed-form-height');
+      };
+      window.addEventListener('scroll', updateFixedFormOffset, { passive: true });
+      window.addEventListener('resize', updateFixedFormOffset);
+      updateFixedFormOffset();
+    }
+
+    function selectTab(index, focusTab) {
+      tabs.forEach(function(tab, tabIndex) {
+        var selected = tabIndex === index;
+        tab.classList.toggle('is-active', selected);
+        tab.setAttribute('aria-selected', selected ? 'true' : 'false');
+        tab.tabIndex = selected ? 0 : -1;
+        panels[tabIndex].hidden = !selected;
+      });
+      content.scrollTop = 0;
+      if (focusTab) tabs[index].focus();
+    }
+
+    function openRecommendations() {
+      if (isOpen) return;
+      isOpen = true;
+      window.clearTimeout(closeTimer);
+      panel.hidden = false;
+      overlay.hidden = false;
+      trigger.setAttribute('aria-expanded', 'true');
+      document.documentElement.classList.add('special-recommendations-open');
+      window.requestAnimationFrame(function() {
+        if (!isOpen) return;
+        panel.classList.add('is-open');
+        overlay.classList.add('is-open');
+        close.focus();
+      });
+    }
+
+    function closeRecommendations() {
+      if (!isOpen) return;
+      isOpen = false;
+      panel.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      trigger.setAttribute('aria-expanded', 'false');
+      document.documentElement.classList.remove('special-recommendations-open');
+      trigger.focus();
+      window.clearTimeout(closeTimer);
+      closeTimer = window.setTimeout(function() {
+        if (!isOpen) {
+          panel.hidden = true;
+          overlay.hidden = true;
+        }
+      }, reducedMotion.matches ? 0 : 310);
+    }
+
+    trigger.addEventListener('click', openRecommendations);
+    close.addEventListener('click', closeRecommendations);
+    overlay.addEventListener('click', closeRecommendations);
+    tabs.forEach(function(tab, index) {
+      tab.addEventListener('click', function() { selectTab(index, false); });
+      tab.addEventListener('keydown', function(event) {
+        var next;
+        if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+        if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
+        if (event.key === 'Home') next = 0;
+        if (event.key === 'End') next = tabs.length - 1;
+        if (next !== undefined) {
+          event.preventDefault();
+          selectTab(next, true);
+        }
+      });
+    });
+
+    document.addEventListener('keydown', function(event) {
+      if (!isOpen) return;
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        event.stopPropagation();
+        closeRecommendations();
+      } else if (event.key === 'Tab') {
+        var focusable = panel.querySelectorAll('button:not([disabled]):not([tabindex="-1"]), a[href], [tabindex="0"]');
+        var visible = Array.prototype.filter.call(focusable, function(element) {
+          return !element.closest('[hidden]');
+        });
+        var first = visible[0];
+        var last = visible[visible.length - 1];
+        if (!first) {
+          event.preventDefault();
+          panel.focus();
+        } else if (event.shiftKey && (document.activeElement === first || !panel.contains(document.activeElement))) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && (document.activeElement === last || !panel.contains(document.activeElement))) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+    }, true);
+    document.addEventListener('focusin', function(event) {
+      if (isOpen && !panel.contains(event.target)) close.focus();
+    });
+  }
+
   function init() {
     // Initialize modal handler first
     initModalHandler();
@@ -3722,6 +3856,7 @@
     initProductDescriptionToggle();
     initAdbar();
     initPromotionalModal();
+    initSpecialRecommendations();
 
     // CATEGORY
     initProductItemSliders();

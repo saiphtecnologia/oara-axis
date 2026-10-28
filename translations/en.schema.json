@@ -1,5 +1,6 @@
 {
   "names": {
+    "special_recommendations": "Special Recommendations",
     "brand": "Brand identity",
     "advanced_settings": "Advanced settings",
     "logo": "Logo",
@@ -164,6 +165,16 @@
     "account_subscription_address": "Subscription shipping address"
   },
   "settings": {
+    "special_recommendations_enabled": "Show recommendations button in the store",
+    "special_recommendations_icon": "Button image (animated GIF, PNG or JPG; square)",
+    "special_recommendations_banner": "Panel highlight image (8:5 ratio)",
+    "special_recommendations_title": "Title below image",
+    "special_recommendations_tab_1_title": "Tab 1 name",
+    "special_recommendations_tab_2_title": "Tab 2 name",
+    "special_recommendations_tab_3_title": "Tab 3 name",
+    "reco_tab_1": "Recommendations Tab 1",
+    "reco_tab_2": "Recommendations Tab 2",
+    "reco_tab_3": "Recommendations Tab 3",
     "code": "Add HTML, CSS, or JS",
     "image": "Image",
     "image_1": "First image",
@@ -595,6 +606,9 @@
     "navbar_mobile_in_header": "In the header"
   },
   "info": {
+    "special_recommendations_icon": "Reference: 160 × 160 px. Without an image, the button shows LUVÈRE on black.",
+    "special_recommendations_banner": "Reference: 800 × 500 px, 8:5 ratio.",
+    "special_recommendations_products": "Manual selection, up to 40 products. Keep the order set in the organizer.",
     "heading_size_visual_only": "Defines visual size only. Does not affect the page's SEO structure.",
     "video_url": "Paste a YouTube or Vimeo video URL",
     "video_cover_image": "Replaces the video thumbnail and improves loading performance.",
@@ -618,6 +632,10 @@
     "products_source_organize": "<a href='/admin/products/organize' target='_blank' rel='noopener noreferrer'>Choose which products to feature</a>"
   },
   "content": {
+    "special_recommendations_organizer": "Select and order up to 40 products for each tab in the product organizer. The button appears once at least one product is selected.",
+    "special_recommendations_trigger": "Floating button",
+    "special_recommendations_panel": "Recommendations panel",
+    "special_recommendations_products": "Product organizer",
     "main_colors": "Main colors",
     "grid_layout": "Grid layout",
     "pagination": "Pagination",
@@ -658,6 +676,10 @@
     "layout": "Layout"
   },
   "defaults": {
+    "special_recommendations_title": "Recommendations",
+    "special_recommendations_tab_1_title": "For You",
+    "special_recommendations_tab_2_title": "History",
+    "special_recommendations_tab_3_title": "SALE",
     "inactive_tab_message_01": "You're missing out...",
     "inactive_tab_message_02": "Come back!",
     "last_product_text": "Last unit!",

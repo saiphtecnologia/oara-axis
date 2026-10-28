@@ -13,3 +13,12 @@ timer_offers
 featured
 	name = Principal
 	description = El producto principal aparece en la página de inicio (1 producto).
+reco_tab_1
+	name = Recomendações Aba 1
+	description = Selecione e ordene manualmente os produtos da primeira aba (até 40 produtos).
+reco_tab_2
+	name = Recomendações Aba 2
+	description = Selecione e ordene manualmente os produtos da segunda aba (até 40 produtos).
+reco_tab_3
+	name = Recomendações Aba 3
+	description = Selecione e ordene manualmente os produtos da terceira aba (até 40 produtos).

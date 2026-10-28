@@ -1,5 +1,26 @@
 [
   {
+    "name": "t:names.special_recommendations",
+    "icon": "StarIcon",
+    "advanced": false,
+    "settings": [
+      { "type": "setting", "setting_type": "toggle", "id": "special_recommendations_enabled", "label": "t:settings.special_recommendations_enabled", "default": true },
+      { "type": "paragraph", "content": "t:content.special_recommendations_organizer" },
+      { "type": "header", "content": "t:content.special_recommendations_trigger" },
+      { "type": "setting", "setting_type": "image_picker", "id": "special_recommendations_icon", "label": "t:settings.special_recommendations_icon", "info": "t:info.special_recommendations_icon" },
+      { "type": "header", "content": "t:content.special_recommendations_panel" },
+      { "type": "setting", "setting_type": "image_picker", "id": "special_recommendations_banner", "label": "t:settings.special_recommendations_banner", "info": "t:info.special_recommendations_banner" },
+      { "type": "setting", "setting_type": "text", "id": "special_recommendations_title", "label": "t:settings.special_recommendations_title", "default": "t:defaults.special_recommendations_title" },
+      { "type": "setting", "setting_type": "text", "id": "special_recommendations_tab_1_title", "label": "t:settings.special_recommendations_tab_1_title", "default": "t:defaults.special_recommendations_tab_1_title" },
+      { "type": "setting", "setting_type": "text", "id": "special_recommendations_tab_2_title", "label": "t:settings.special_recommendations_tab_2_title", "default": "t:defaults.special_recommendations_tab_2_title" },
+      { "type": "setting", "setting_type": "text", "id": "special_recommendations_tab_3_title", "label": "t:settings.special_recommendations_tab_3_title", "default": "t:defaults.special_recommendations_tab_3_title" },
+      { "type": "header", "content": "t:content.special_recommendations_products" },
+      { "type": "setting", "setting_type": "product_list", "id": "reco_tab_1", "label": "t:settings.reco_tab_1", "info": "t:info.special_recommendations_products", "default": { "kind": "collection", "id": "reco_tab_1" } },
+      { "type": "setting", "setting_type": "product_list", "id": "reco_tab_2", "label": "t:settings.reco_tab_2", "info": "t:info.special_recommendations_products", "default": { "kind": "collection", "id": "reco_tab_2" } },
+      { "type": "setting", "setting_type": "product_list", "id": "reco_tab_3", "label": "t:settings.reco_tab_3", "info": "t:info.special_recommendations_products", "default": { "kind": "collection", "id": "reco_tab_3" } }
+    ]
+  },
+  {
     "name": "t:names.colors",
     "icon": "ColorPaletteIcon",
     "group": "t:names.brand",

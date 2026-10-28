@@ -113,6 +113,9 @@
       <span class="js-cart-discount hidden" data-priceraw="{{ cart.promotional_discount_amount }}"></span>
     {% endif %}
 
+    {# One instance for every page, including standalone templates. #}
+    {% include 'snippets/special-recommendations.tpl' %}
+
     {# JavaScript - Standalone libraries (Swiper, Lazysizes) - blocking to guarantee availability #}
     {{ 'js/libraries-standalone.js' | static_url | script_tag }}
 

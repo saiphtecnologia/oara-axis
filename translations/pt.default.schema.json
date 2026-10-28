@@ -1,5 +1,6 @@
 {
   "names": {
+    "special_recommendations": "Recomendações Especiais",
     "brand": "Identidade de marca",
     "advanced_settings": "Configurações avançadas",
     "logo": "Logo",
@@ -164,6 +165,16 @@
     "account_subscription_address": "Endereço de envio da assinatura"
   },
   "settings": {
+    "special_recommendations_enabled": "Mostrar botão de recomendações na loja",
+    "special_recommendations_icon": "Imagem do botão (GIF animado, PNG ou JPG; quadrada)",
+    "special_recommendations_banner": "Imagem de destaque do painel (proporção 8:5)",
+    "special_recommendations_title": "Título abaixo da imagem",
+    "special_recommendations_tab_1_title": "Nome da aba 1",
+    "special_recommendations_tab_2_title": "Nome da aba 2",
+    "special_recommendations_tab_3_title": "Nome da aba 3",
+    "reco_tab_1": "Recomendações Aba 1",
+    "reco_tab_2": "Recomendações Aba 2",
+    "reco_tab_3": "Recomendações Aba 3",
     "code": "Adicione HTML, CSS ou JS",
     "image": "Imagem",
     "image_1": "Primeira imagem",
@@ -595,6 +606,9 @@
     "navbar_mobile_in_header": "No cabeçalho"
   },
   "info": {
+    "special_recommendations_icon": "Referência: 160 × 160 px. Sem imagem, o botão mostra LUVÈRE sobre fundo preto.",
+    "special_recommendations_banner": "Referência: 800 × 500 px, proporção 8:5.",
+    "special_recommendations_products": "Seleção manual, até 40 produtos. Mantenha a ordem definida no Organizador.",
     "heading_size_visual_only": "Define apenas o tamanho visual. Não afeta a estrutura SEO da página.",
     "video_url": "Cole a URL de um vídeo do YouTube ou Vimeo",
     "video_cover_image": "Substitui a miniatura do vídeo e melhora o desempenho de carregamento.",
@@ -618,6 +632,10 @@
     "products_source_organize": "<a href='/admin/products/organize' target='_blank' rel='noopener noreferrer'>Escolha quais produtos destacar</a>"
   },
   "content": {
+    "special_recommendations_organizer": "Selecione e ordene até 40 produtos em cada aba pelo Organizador de produtos. O botão aparece após selecionar ao menos um produto.",
+    "special_recommendations_trigger": "Botão flutuante",
+    "special_recommendations_panel": "Painel de recomendações",
+    "special_recommendations_products": "Organizador de produtos",
     "main_colors": "Cores principais",
     "grid_layout": "Design de grade",
     "pagination": "Paginação",
@@ -658,6 +676,10 @@
     "layout": "Design"
   },
   "defaults": {
+    "special_recommendations_title": "Recomendações",
+    "special_recommendations_tab_1_title": "Pra Você",
+    "special_recommendations_tab_2_title": "Histórico",
+    "special_recommendations_tab_3_title": "SALE",
     "inactive_tab_message_01": "Não perca...",
     "inactive_tab_message_02": "Volte!",
     "last_product_text": "Última peça!",
